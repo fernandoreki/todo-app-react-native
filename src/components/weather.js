@@ -43,7 +43,7 @@ const Weather = () => {
     <View style={styles.root}>
       <View>
         <TextInput
-          placeholder="Introduce el nombre de la ciudad que deseas obtener el clima"
+          placeholder="Obtén el clima de la ciudad"
           onChangeText={text => setInput(text)}
           value={input}
           placeholderTextColor={'black'}
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     borderRadius: 10,
     borderBottomColor: '#009AFF',
+    color: 'black',
   },
   infoView: {
     alignItems: 'center',

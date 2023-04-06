@@ -25,6 +25,7 @@ const useTask = () => {
   };
 
   const updateAdd = state => {
+    setTask('');
     setShowAdd(state);
   };
 
@@ -35,12 +36,7 @@ const useTask = () => {
   };
 
   const updateTask = (index) => {
-    //mandamos el texto al input
     const updateTask = task
-    /*const temp = [...tasks];
-    setTask(item)
-    temp[index] = 'updated';
-    setTasks(temp);*/
     const temp = tasks.map((value, i) => {
       if(i === index) {
         value = updateTask;

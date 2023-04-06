@@ -75,7 +75,8 @@ const HomeScreen = () => {
                 style={styles.buttonText}
               />
             </TouchableOpacity>
-            {showEditBtn ? <TouchableOpacity style={[styles.button, styles.acceptButton]}
+            {showEditBtn ? <TouchableOpacity
+              style={[styles.button, styles.updateButton]}
               onPress={() => {updateTask(currentId); setShowEditBtn(false)}}>
               <AntDesing
                 name="check"
@@ -109,7 +110,7 @@ const HomeScreen = () => {
           onPress={() => updateAdd(true)}>
           <AntDesing
             name="checksquareo"
-            color={'#919596'}
+            color={'#175B7B'}
             size={25}
             style={styles.addButtonText}
           />
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 60,
     width: 60,
-    backgroundColor: '#C7E7F6',
+    backgroundColor: '#175B7B',
     marginLeft: 10,
   },
   addButtonText: {
@@ -176,6 +177,10 @@ const styles = StyleSheet.create({
   },
   acceptButton: {
     backgroundColor: '#009AFF',
+  },
+  updateButton: {
+    backgroundColor: '#009AFF',
+    marginLeft: 5,
   },
   buttonText: {
     fontSize: 15,
