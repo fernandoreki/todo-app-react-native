@@ -26,17 +26,27 @@ const useTask = () => {
     setShowAdd(state);
   };
 
-  const editTask = (index, text) => {
+  const editTask = (text) => {
+    setTask(text);
+  };
+
+  const updateTask = (index, item) => {
     //mandamos el texto al input
     setShowAdd(true);
     const temp = [...tasks];
-    setTask(text)
-    temp[index] = 'updated';
+    setTask(item)
+    temp[index] = editTask;
     setTasks(temp);
-    //setTask(text);
-    //editamos la cadena que tiene el imput
-
-    //asígnamos el nuevo valor al indice que la tarea que se editó
+    /*const temp = tasks.map((value, i) => {
+      if(i === index) {
+        value = 'updated';
+        return value;
+      } else {
+        return value;
+      }
+    });
+    setTasks(temp);
+    console.log(index);*/
   };
 
   return {
@@ -47,6 +57,7 @@ const useTask = () => {
     showAdd,
     updateAdd,
     editTask,
+    updateTask
   };
 };
 

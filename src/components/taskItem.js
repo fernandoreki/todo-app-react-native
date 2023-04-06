@@ -2,10 +2,10 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import AntDesing from 'react-native-vector-icons/AntDesign';
 
-const TaskItem = ({ task, onPressDelete, onPressEdit }) => {
+const TaskItem = ({ task, onPressDelete, onPressUpdate }) => {
   return (
     <View style={style.container}>
-      <TouchableOpacity style={style.button} onPress={onPressEdit}>
+      <TouchableOpacity style={style.button} onPress={onPressUpdate}>
         <AntDesing
           name="edit"
           color={'#D2ECFD'}
