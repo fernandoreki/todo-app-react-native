@@ -5,23 +5,26 @@ import AntDesing from 'react-native-vector-icons/AntDesign';
 const TaskItem = ({ task, onPressDelete, onPressUpdate }) => {
   return (
     <View style={style.container}>
-      <TouchableOpacity style={style.button} onPress={onPressUpdate}>
-        <AntDesing
-          name="edit"
-          color={'#D2ECFD'}
-          size={25}
-          style={style.buttonEdit}
-        />
-      </TouchableOpacity>
       <Text style={style.text}>{task}</Text>
-      <TouchableOpacity style={style.button} onPress={onPressDelete}>
-        <AntDesing
-          name="delete"
-          color={'#F72D2D'}
-          size={25}
-          style={style.buttonDelete}
-        />
-      </TouchableOpacity>
+      <View style={style.container}>
+        <TouchableOpacity style={style.button} onPress={onPressUpdate}>
+          <AntDesing
+            name="edit"
+            color={'#D2ECFD'}
+            size={25}
+            style={style.buttonEdit}
+          />
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={style.button} onPress={onPressDelete}>
+          <AntDesing
+            name="delete"
+            color={'#F72D2D'}
+            size={25}
+            style={style.buttonDelete}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -33,6 +36,8 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 10,
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   button: {
     // backgroundColor: 'white',
@@ -45,13 +50,12 @@ const style = StyleSheet.create({
     marginLeft: 10,
   },
   buttonDelete: {
-    paddingHorizontal: 2,
-    paddingEnd: 1,
     paddingVertical: 1,
+    paddingLeft: 5,
   },
   buttonEdit: {
-    paddingHorizontal: 2,
     paddingVertical: 1,
+    paddingRight: 5,
   },
 });
 

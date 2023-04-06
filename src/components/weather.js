@@ -54,7 +54,7 @@ const Weather = () => {
       </View>
       {loading && (
         <View>
-          <ActivityIndicator size={'large'} color="#009AFF" />
+          <ActivityIndicator size={'large'} color="#051118" />
         </View>
       )}
       {showInfo && data !== undefined && (
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   dateText: {
-    color: '#009AFF',
+    color: '#051118',
     fontSize: 15,
     marginVertical: 10,
   },
