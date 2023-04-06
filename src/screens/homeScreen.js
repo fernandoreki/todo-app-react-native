@@ -18,9 +18,11 @@ import Weather from '../components/weather';
 const screenHeight = Dimensions.get('screen').height;
 
 const HomeScreen = () => {
-  const {addTask, deleteTask, task, tasks, showAdd, updateAdd, editTask, updateTask} =
+  const {addTask, deleteTask, task, tasks, showAdd, updateAdd, editTask, updateTask, canUpdate} =
     useTask();
   const [showWeather, setShowWeather] = useState(false);
+  const [currentId, setCurrentId] = useState();
+  const [showEditBtn, setShowEditBtn] = useState(false);
 
   // const [task, setTask] = useState('');
   // //Guardar tasks
@@ -55,9 +57,9 @@ const HomeScreen = () => {
           <View style={{marginVertical: 10, flexDirection: 'row'}}>
             <TouchableOpacity
               style={[styles.button, styles.acceptButton]}
-              onPress={addTask}>
+              onPress={() => addTask()}>
               <AntDesing
-                name="check"
+                name="plus"
                 color={'#D2ECFD'}
                 size={25}
                 style={styles.buttonText}
@@ -65,7 +67,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.button, styles.cancelarButton]}
-              onPress={() => updateAdd(false)}>
+              onPress={() => {updateAdd(false); setShowEditBtn(false)}}>
               <AntDesing
                 name="close"
                 color={'#D2ECFD'}
@@ -73,6 +75,16 @@ const HomeScreen = () => {
                 style={styles.buttonText}
               />
             </TouchableOpacity>
+            {showEditBtn ? <TouchableOpacity style={[styles.button, styles.acceptButton]}
+              onPress={() => {updateTask(currentId); setShowEditBtn(false)}}>
+              <AntDesing
+                name="check"
+                color={'#D2ECFD'}
+                size={25}
+                style={styles.buttonText} />
+
+            </TouchableOpacity> : '' }
+            
           </View>
         </View>
       )}
@@ -80,9 +92,9 @@ const HomeScreen = () => {
       <View>
         <FlatList
           data={tasks}
-          keyExtractor={item => item}
-          renderItem={({item, index}) => (
-            <TaskItem task={item} onPressDelete={() => deleteTask(index)} onPressUpdate={() => updateTask(index, item)} />
+          keyExtractor={item => item} 
+          renderItem={({item, index}) => ( 
+            <TaskItem task={item} onPressDelete={() => deleteTask(index)} onPressUpdate={() => {editTask(item, index); setCurrentId(index); setShowEditBtn(true)}}/>
           )}
           ListHeaderComponent={() => <ListHeader />}
           ItemSeparatorComponent={() => <View style={{marginVertical: 5}} />}

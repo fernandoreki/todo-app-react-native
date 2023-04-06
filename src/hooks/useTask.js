@@ -6,6 +6,8 @@ const useTask = () => {
   const [task, setTask] = useState('');
   //Guardar tasks
   const [tasks, setTasks] = useState(['Tareas pendientes']);
+  
+  const [canUpdate, setCanUpdate] = useState(false);
 
   const addTask = () => {
     //agregar el task al arreglo
@@ -26,27 +28,31 @@ const useTask = () => {
     setShowAdd(state);
   };
 
-  const editTask = (text) => {
+  const editTask = (text, index) => {
+    setCanUpdate(true);
+    setShowAdd(true);
     setTask(text);
   };
 
-  const updateTask = (index, item) => {
+  const updateTask = (index) => {
     //mandamos el texto al input
-    setShowAdd(true);
-    const temp = [...tasks];
+    const updateTask = task
+    /*const temp = [...tasks];
     setTask(item)
-    temp[index] = editTask;
-    setTasks(temp);
-    /*const temp = tasks.map((value, i) => {
+    temp[index] = 'updated';
+    setTasks(temp);*/
+    const temp = tasks.map((value, i) => {
       if(i === index) {
-        value = 'updated';
+        value = updateTask;
         return value;
       } else {
         return value;
       }
     });
     setTasks(temp);
-    console.log(index);*/
+    setCanUpdate(false);
+    setShowAdd(false);
+    setTask('');
   };
 
   return {
@@ -57,7 +63,8 @@ const useTask = () => {
     showAdd,
     updateAdd,
     editTask,
-    updateTask
+    updateTask,
+    canUpdate
   };
 };
 
